@@ -30,53 +30,83 @@ Color_RGBA8 ColorRGBA8(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
 }
 
 static const std::map<CosmeticGroup, const char*> sCosmeticGroupLabels = {
-    { COSMETICS_GROUP_PLAYER, "Player" }, { COSMETICS_GROUP_EFFECTS, "Effects" }, { COSMETICS_GROUP_TRAILS, "Trails" },
+    { COSMETICS_GROUP_PLAYER, "Player" }, { COSMETICS_GROUP_EFFECTS, "Effects" }, { COSMETICS_GROUP_TRAILS, "Trails" }, 
+    { COSMETICS_GROUP_WOODFALL_KEYS, "Woodfall Keys" }, { COSMETICS_GROUP_SNOWHEAD_KEYS, "Snowhead Keys" }, 
+    { COSMETICS_GROUP_GREAT_BAY_KEYS, "Great Bay Keys" }, { COSMETICS_GROUP_STONE_TOWER_KEYS, "Stone Tower Keys" },
     { COSMETICS_GROUP_HUD, "HUD" },       { COSMETICS_GROUP_BUTTONS, "Buttons" }, { COSMETICS_GROUP_MENUS, "Menus" },
 };
 
 // clang-format off
 std::map<std::string, CosmeticOption> cosmeticOptions = {
-    COSMETIC_OPTION("HUD.Hearts",                   "Hearts",                   COSMETICS_GROUP_HUD,          ColorRGBA8(255,  70,  50, 255), false, true, false),
-    COSMETIC_OPTION("HUD.Magic",                    "Magic",                    COSMETICS_GROUP_HUD,          ColorRGBA8(  0, 200,   0, 255), false, true, false),
-    COSMETIC_OPTION("HUD.SmallKey",                 "Small Key",                COSMETICS_GROUP_HUD,          ColorRGBA8(  0, 200, 230, 255), false, true, false),
-    COSMETIC_OPTION("HUD.RupeeIcon",                "Rupee Icon",               COSMETICS_GROUP_HUD,          ColorRGBA8(200, 255, 100, 255), false, true, false),
-    COSMETIC_OPTION("HUD.Minimap",                  "Minimap",                  COSMETICS_GROUP_HUD,          ColorRGBA8(  0, 255, 255, 160), false, true, false),
-    COSMETIC_OPTION("Effects.SpinSlashCharge",      "Spin Slash Charge",        COSMETICS_GROUP_EFFECTS,      ColorRGBA8(170, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Effects.SpinSlashBurst",       "Spin Slash Burst",         COSMETICS_GROUP_EFFECTS,      ColorRGBA8(170, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Effects.GreatSpinCharge",      "Great Spin Charge",        COSMETICS_GROUP_EFFECTS,      ColorRGBA8(255, 255, 170, 255), false, true, false),
-    COSMETIC_OPTION("Effects.GreatSpinBurst",       "Great Spin Burst",         COSMETICS_GROUP_EFFECTS,      ColorRGBA8(255, 255, 170, 255), false, true, false),
-    COSMETIC_OPTION("Effects.FireArrowPrim",        "Fire Arrow Primary",       COSMETICS_GROUP_EFFECTS,      ColorRGBA8(255, 200,   0, 255), false, true, false),
-    COSMETIC_OPTION("Effects.FireArrowSec",         "Fire Arrow Secondary",     COSMETICS_GROUP_EFFECTS,      ColorRGBA8(255,   0,   0, 128), false, true, false),
-    COSMETIC_OPTION("Effects.IceArrowPrim",         "Ice Arrow Primary",        COSMETICS_GROUP_EFFECTS,      ColorRGBA8(170, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Effects.IceArrowSec",          "Ice Arrow Secondary",      COSMETICS_GROUP_EFFECTS,      ColorRGBA8(  0,   0, 255, 128), false, true, false),
-    COSMETIC_OPTION("Effects.LightArrowPrim",       "Light Arrow Primary",      COSMETICS_GROUP_EFFECTS,      ColorRGBA8(255, 255, 170, 255), false, true, false),
-    COSMETIC_OPTION("Effects.LightArrowSec",        "Light Arrow Secondary",    COSMETICS_GROUP_EFFECTS,      ColorRGBA8(255, 255,   0, 128), false, true, false),
-    COSMETIC_OPTION("Trails.KokiriSwordTrail",      "Kokiri Sword Trail",       COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.RazorSwordTrail",       "Razor Sword Trail",        COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.GildedSwordTrail",      "Gilded Sword Trail",       COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.GreatFairySwordTrail",  "Great Fairy Sword Trail",  COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.FierceDeitySwordTrail", "Fierce Deity Sword Trail", COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.DekuStickTrail",        "Deku Stick Trail",         COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.DekuSpinTrail",         "Deku Spin Trail",          COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.ZoraPunchTrail",        "Zora Punch Trail",         COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.ZoraKickTrail",         "Zora Kick Trail",          COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Trails.ZoraBoomerangTrail",    "Zora Boomerang Trail",     COSMETICS_GROUP_TRAILS,       ColorRGBA8(255, 255, 100, 255), false, true, false),
-    COSMETIC_OPTION("Buttons.B",                    "B",                        COSMETICS_GROUP_BUTTONS,      ColorRGBA8(100, 255, 120, 255), false, true, false),
-    COSMETIC_OPTION("Buttons.A",                    "A",                        COSMETICS_GROUP_BUTTONS,      ColorRGBA8(100, 200, 255, 255), false, true, false),
-    COSMETIC_OPTION("Buttons.CLeft",                "C Left",                   COSMETICS_GROUP_BUTTONS,      ColorRGBA8(255, 240,   0, 255), false, true, false),
-    COSMETIC_OPTION("Buttons.CDown",                "C Down",                   COSMETICS_GROUP_BUTTONS,      ColorRGBA8(255, 240,   0, 255), false, true, false),
-    COSMETIC_OPTION("Buttons.CRight",               "C Right",                  COSMETICS_GROUP_BUTTONS,      ColorRGBA8(255, 240,   0, 255), false, true, false),
-    COSMETIC_OPTION("Buttons.DPad",                 "D Pad",                    COSMETICS_GROUP_BUTTONS,      ColorRGBA8(255, 255, 255, 255), false, true, false),
-    COSMETIC_OPTION("Buttons.Start",                "Start",                    COSMETICS_GROUP_BUTTONS,      ColorRGBA8(255, 130,  60, 255), false, true, false),
-    COSMETIC_OPTION("Menus.FileWindow",             "File Select Window",       COSMETICS_GROUP_MENUS,        ColorRGBA8(100, 150, 255, 255), false, true, false),
-    COSMETIC_OPTION("Menus.FilePlates",             "File Select Plates",       COSMETICS_GROUP_MENUS,        ColorRGBA8(100, 150, 255, 255), false, true, false),
-    COSMETIC_OPTION("Player.HumanTunic",            "Human Tunic",              COSMETICS_GROUP_PLAYER,       ColorRGBA8( 30, 105,  27, 255), false, true, false),
-    COSMETIC_OPTION("Player.HumanHair",             "Human Hair",               COSMETICS_GROUP_PLAYER,       ColorRGBA8(255, 240,   0, 255), false, true, false),
-    COSMETIC_OPTION("Player.DekuTunic",             "Deku Tunic",               COSMETICS_GROUP_PLAYER,       ColorRGBA8( 30, 105,  27, 255), false, true, false),
-    COSMETIC_OPTION("Player.DekuHair",              "Deku Hair",                COSMETICS_GROUP_PLAYER,       ColorRGBA8(255, 240,   0, 255), false, true, false),
-    COSMETIC_OPTION("Player.GoronTunic",            "Goron Tunic",              COSMETICS_GROUP_PLAYER,       ColorRGBA8( 30, 105,  27, 255), false, true, false),
-    COSMETIC_OPTION("Player.ZoraTunic",             "Zora Tunic",               COSMETICS_GROUP_PLAYER,       ColorRGBA8( 30, 105,  27, 255), false, true, false),
-    COSMETIC_OPTION("Player.KafeiHair",             "Kafei Hair",               COSMETICS_GROUP_PLAYER,       ColorRGBA8( 64,   0, 163, 255), false, true, false),
+    COSMETIC_OPTION("HUD.Hearts",                   "Hearts",                           COSMETICS_GROUP_HUD,                ColorRGBA8(255,  70,  50, 255), false, true, false),
+    COSMETIC_OPTION("HUD.Magic",                    "Magic",                            COSMETICS_GROUP_HUD,                ColorRGBA8(  0, 200,   0, 255), false, true, false),
+    COSMETIC_OPTION("HUD.SmallKey",                 "Small Key",                        COSMETICS_GROUP_HUD,                ColorRGBA8(  0, 200, 230, 255), false, true, false),
+    COSMETIC_OPTION("HUD.RupeeIcon",                "Rupee Icon",                       COSMETICS_GROUP_HUD,                ColorRGBA8(200, 255, 100, 255), false, true, false),
+    COSMETIC_OPTION("HUD.Minimap",                  "Minimap",                          COSMETICS_GROUP_HUD,                ColorRGBA8(  0, 255, 255, 160), false, true, false),
+    COSMETIC_OPTION("Effects.SpinSlashCharge",      "Spin Slash Charge",                COSMETICS_GROUP_EFFECTS,            ColorRGBA8(170, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Effects.SpinSlashBurst",       "Spin Slash Burst",                 COSMETICS_GROUP_EFFECTS,            ColorRGBA8(170, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Effects.GreatSpinCharge",      "Great Spin Charge",                COSMETICS_GROUP_EFFECTS,            ColorRGBA8(255, 255, 170, 255), false, true, false),
+    COSMETIC_OPTION("Effects.GreatSpinBurst",       "Great Spin Burst",                 COSMETICS_GROUP_EFFECTS,            ColorRGBA8(255, 255, 170, 255), false, true, false),
+    COSMETIC_OPTION("Effects.FireArrowPrim",        "Fire Arrow Primary",               COSMETICS_GROUP_EFFECTS,            ColorRGBA8(255, 200,   0, 255), false, true, false),
+    COSMETIC_OPTION("Effects.FireArrowSec",         "Fire Arrow Secondary",             COSMETICS_GROUP_EFFECTS,            ColorRGBA8(255,   0,   0, 128), false, true, false),
+    COSMETIC_OPTION("Effects.IceArrowPrim",         "Ice Arrow Primary",                COSMETICS_GROUP_EFFECTS,            ColorRGBA8(170, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Effects.IceArrowSec",          "Ice Arrow Secondary",              COSMETICS_GROUP_EFFECTS,            ColorRGBA8(  0,   0, 255, 128), false, true, false),
+    COSMETIC_OPTION("Effects.LightArrowPrim",       "Light Arrow Primary",              COSMETICS_GROUP_EFFECTS,            ColorRGBA8(255, 255, 170, 255), false, true, false),
+    COSMETIC_OPTION("Effects.LightArrowSec",        "Light Arrow Secondary",            COSMETICS_GROUP_EFFECTS,            ColorRGBA8(255, 255,   0, 128), false, true, false),
+    COSMETIC_OPTION("Trails.KokiriSwordTrail",      "Kokiri Sword Trail",               COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.RazorSwordTrail",       "Razor Sword Trail",                COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.GildedSwordTrail",      "Gilded Sword Trail",               COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.GreatFairySwordTrail",  "Great Fairy Sword Trail",          COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.FierceDeitySwordTrail", "Fierce Deity Sword Trail",         COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.DekuStickTrail",        "Deku Stick Trail",                 COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.DekuSpinTrail",         "Deku Spin Trail",                  COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.ZoraPunchTrail",        "Zora Punch Trail",                 COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.ZoraKickTrail",         "Zora Kick Trail",                  COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Trails.ZoraBoomerangTrail",    "Zora Boomerang Trail",             COSMETICS_GROUP_TRAILS,             ColorRGBA8(255, 255, 100, 255), false, true, false),
+    COSMETIC_OPTION("Buttons.B",                    "B",                                COSMETICS_GROUP_BUTTONS,            ColorRGBA8(100, 255, 120, 255), false, true, false),
+    COSMETIC_OPTION("Buttons.A",                    "A",                                COSMETICS_GROUP_BUTTONS,            ColorRGBA8(100, 200, 255, 255), false, true, false),
+    COSMETIC_OPTION("Buttons.CLeft",                "C Left",                           COSMETICS_GROUP_BUTTONS,            ColorRGBA8(255, 240,   0, 255), false, true, false),
+    COSMETIC_OPTION("Buttons.CDown",                "C Down",                           COSMETICS_GROUP_BUTTONS,            ColorRGBA8(255, 240,   0, 255), false, true, false),
+    COSMETIC_OPTION("Buttons.CRight",               "C Right",                          COSMETICS_GROUP_BUTTONS,            ColorRGBA8(255, 240,   0, 255), false, true, false),
+    COSMETIC_OPTION("Buttons.DPad",                 "D Pad",                            COSMETICS_GROUP_BUTTONS,            ColorRGBA8(255, 255, 255, 255), false, true, false),
+    COSMETIC_OPTION("Buttons.Start",                "Start",                            COSMETICS_GROUP_BUTTONS,            ColorRGBA8(255, 130,  60, 255), false, true, false),
+    COSMETIC_OPTION("Menus.FileWindow",             "File Select Window",               COSMETICS_GROUP_MENUS,              ColorRGBA8(100, 150, 255, 255), false, true, false),
+    COSMETIC_OPTION("Menus.FilePlates",             "File Select Plates",               COSMETICS_GROUP_MENUS,              ColorRGBA8(100, 150, 255, 255), false, true, false),
+    COSMETIC_OPTION("Player.HumanTunic",            "Human Tunic",                      COSMETICS_GROUP_PLAYER,             ColorRGBA8( 30, 105,  27, 255), false, true, false),
+    COSMETIC_OPTION("Player.HumanHair",             "Human Hair",                       COSMETICS_GROUP_PLAYER,             ColorRGBA8(255, 240,   0, 255), false, true, false),
+    COSMETIC_OPTION("Player.DekuTunic",             "Deku Tunic",                       COSMETICS_GROUP_PLAYER,             ColorRGBA8( 30, 105,  27, 255), false, true, false),
+    COSMETIC_OPTION("Player.DekuHair",              "Deku Hair",                        COSMETICS_GROUP_PLAYER,             ColorRGBA8(255, 240,   0, 255), false, true, false),
+    COSMETIC_OPTION("Player.GoronTunic",            "Goron Tunic",                      COSMETICS_GROUP_PLAYER,             ColorRGBA8( 30, 105,  27, 255), false, true, false),
+    COSMETIC_OPTION("Player.ZoraTunic",             "Zora Tunic",                       COSMETICS_GROUP_PLAYER,             ColorRGBA8( 30, 105,  27, 255), false, true, false),
+    COSMETIC_OPTION("Player.KafeiHair",             "Kafei Hair",                       COSMETICS_GROUP_PLAYER,             ColorRGBA8( 64,   0, 163, 255), false, true, false),
+    
+    COSMETIC_OPTION("Key.WoodfallSmallPrim",        "Woodfall Small Key Primary",       COSMETICS_GROUP_WOODFALL_KEYS,      ColorRGBA8( 255, 170, 246, 255), false, true, false),
+    COSMETIC_OPTION("Key.WoodfallSmallEnv",         "Woodfall Small Key Accent",        COSMETICS_GROUP_WOODFALL_KEYS,      ColorRGBA8( 143,  45, 129, 255), false, true, false),
+    COSMETIC_OPTION("Key.WoodfallEmblemPrim",       "Woodfall Emblem Primary",          COSMETICS_GROUP_WOODFALL_KEYS,      ColorRGBA8( 255, 170, 246, 255), false, true, false),
+    COSMETIC_OPTION("Key.WoodfallEmblemEnv",        "Woodfall Emblem Accent",           COSMETICS_GROUP_WOODFALL_KEYS,      ColorRGBA8( 143,  45, 129, 255), false, true, false),
+    COSMETIC_OPTION("Key.WoodfallBossPrim",         "Woodfall Boss Key Primary",        COSMETICS_GROUP_WOODFALL_KEYS,      ColorRGBA8( 255, 244, 204, 255), false, true, false),
+    COSMETIC_OPTION("Key.WoodfallBossEnv",          "Woodfall Boss Key Accent",         COSMETICS_GROUP_WOODFALL_KEYS,      ColorRGBA8( 143,  107, 0, 255), false, true, false),
+    
+    COSMETIC_OPTION("Key.SnowheadSmallPrim",        "Snowhead Small Key Primary",       COSMETICS_GROUP_SNOWHEAD_KEYS,      ColorRGBA8( 116, 226, 61, 255), false, true, false),
+    COSMETIC_OPTION("Key.SnowheadSmallEnv",         "Snowhead Small Key Accent",        COSMETICS_GROUP_SNOWHEAD_KEYS,      ColorRGBA8( 0, 98, 56, 255), false, true, false),
+    COSMETIC_OPTION("Key.SnowheadEmblemPrim",       "Snowhead Emblem Primary",          COSMETICS_GROUP_SNOWHEAD_KEYS,      ColorRGBA8( 116, 226, 61, 255), false, true, false),
+    COSMETIC_OPTION("Key.SnowheadEmblemEnv",        "Snowhead Emblem Accent",           COSMETICS_GROUP_SNOWHEAD_KEYS,      ColorRGBA8( 0, 98, 56, 255), false, true, false),
+    COSMETIC_OPTION("Key.SnowheadBossPrim",         "Snowhead Boss Key Primary",        COSMETICS_GROUP_SNOWHEAD_KEYS,      ColorRGBA8( 255, 244, 204, 255), false, true, false),
+    COSMETIC_OPTION("Key.SnowheadBossEnv",          "Snowhead Boss Key Accent",         COSMETICS_GROUP_SNOWHEAD_KEYS,      ColorRGBA8( 143,  107, 0, 255), false, true, false),
+    
+    COSMETIC_OPTION("Key.GreatBaySmallPrim",        "Great Bay Small Key Primary",      COSMETICS_GROUP_GREAT_BAY_KEYS,     ColorRGBA8( 143, 103, 226, 255), false, true, false),
+    COSMETIC_OPTION("Key.GreatBaySmallEnv",         "Great Bay Small Key Accent",       COSMETICS_GROUP_GREAT_BAY_KEYS,     ColorRGBA8( 52, 0, 61, 255), false, true, false),
+    COSMETIC_OPTION("Key.GreatBayEmblemPrim",       "Great Bay Emblem Primary",         COSMETICS_GROUP_GREAT_BAY_KEYS,     ColorRGBA8( 143, 103, 226, 255), false, true, false),
+    COSMETIC_OPTION("Key.GreatBayEmblemEnv",        "Great Bay Emblem Accent",          COSMETICS_GROUP_GREAT_BAY_KEYS,     ColorRGBA8( 52, 0, 61, 255), false, true, false),
+    COSMETIC_OPTION("Key.GreatBayBossPrim",         "Great Bay Boss Key Primary",       COSMETICS_GROUP_GREAT_BAY_KEYS,     ColorRGBA8( 255, 244, 204, 255), false, true, false),
+    COSMETIC_OPTION("Key.GreatBayBossEnv",          "Great Bay Boss Key Accent",        COSMETICS_GROUP_GREAT_BAY_KEYS,     ColorRGBA8( 143,  107, 0, 255), false, true, false),
+
+    COSMETIC_OPTION("Key.StoneTowerSmallPrim",      "Stone Tower Small Key Primary",    COSMETICS_GROUP_STONE_TOWER_KEYS,   ColorRGBA8( 226, 221, 0, 255), false, true, false),
+    COSMETIC_OPTION("Key.StoneTowerSmallEnv",       "Stone Tower Small Key Accent",     COSMETICS_GROUP_STONE_TOWER_KEYS,   ColorRGBA8( 119, 65, 0, 255), false, true, false),
+    COSMETIC_OPTION("Key.StoneTowerEmblemPrim",     "Stone Tower Emblem Primary",       COSMETICS_GROUP_STONE_TOWER_KEYS,   ColorRGBA8( 226, 221, 0, 255), false, true, false),
+    COSMETIC_OPTION("Key.StoneTowerEmblemEnv",      "Stone Tower Emblem Accent",        COSMETICS_GROUP_STONE_TOWER_KEYS,   ColorRGBA8( 119, 65, 0, 255), false, true, false),
+    COSMETIC_OPTION("Key.StoneTowerBossPrim",       "Stone Tower Boss Key Primary",     COSMETICS_GROUP_STONE_TOWER_KEYS,   ColorRGBA8( 255, 244, 204, 255), false, true, false),
+    COSMETIC_OPTION("Key.StoneTowerBossEnv",        "Stone Tower Boss Key Accent",      COSMETICS_GROUP_STONE_TOWER_KEYS,   ColorRGBA8( 143,  107, 0, 255), false, true, false),
 };
 // clang-format on
 
@@ -964,6 +994,15 @@ void CosmeticEditorWindow::DrawElement() {
         if (HasCustomCosmetics() && ImGui::BeginTabItem("Mods")) {
             UIWidgets::Separator(true, true, 2.0f, 2.0f);
             DrawDynamicCosmetics();
+            ImGui::EndTabItem();
+        }
+
+        if (ImGui::BeginTabItem("Keys")) {
+            UIWidgets::Separator(true, true, 2.0f, 2.0f);
+            CosmeticEditorDrawGroup(COSMETICS_GROUP_WOODFALL_KEYS);
+            CosmeticEditorDrawGroup(COSMETICS_GROUP_SNOWHEAD_KEYS);
+            CosmeticEditorDrawGroup(COSMETICS_GROUP_GREAT_BAY_KEYS);
+            CosmeticEditorDrawGroup(COSMETICS_GROUP_STONE_TOWER_KEYS);
             ImGui::EndTabItem();
         }
 

@@ -606,6 +606,9 @@ static void DrawGeneralTab() {
         "Container Style Matches Contents", "gRando.CSMC",
         UIWidgets::CheckboxOptions().Tooltip("This will make the contents of a container match the container itself. "
                                              "Eg chests, pots, crates, grass, etc."));
+    UIWidgets::CVarCheckbox(
+        "Unique Key Models", "gRando.UniqueKeyModels",
+        UIWidgets::CheckboxOptions().Tooltip("This will make Small Keys and Boss Keys have unique models depending on their corresponding dungeon."));
     UIWidgets::CVarCombobox(
         "Junk Items", "gRando.JunkItems", &junkItemsOptions,
         UIWidgets::ComboboxOptions()
